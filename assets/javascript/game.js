@@ -24,7 +24,7 @@ function makeGuess(key) {
         if (key === alphabet[i]) {
             if (guessedLetters.indexOf(key) === -1) {
                 guessedLetters.push(key);
-                checkGuess(alphabet[i]);
+                // checkGuess(alphabet[i]);
                 updateChoices();
             }   
         }
