@@ -24,12 +24,12 @@ function makeGuess(key) {
         if (key === alphabet[i]) {
             if (guessedLetters.indexOf(key) === -1) {
                 guessedLetters.push(key);
-                console.log("im thinking";)
-                checkGuess(key);
-            }
-        }   
+                checkGuess(alphabet[i]);
+                updateChoices();
+            }   
+        }
     }
-}
+};
 
 // will check if letter was correct
 function checkGuess(letter) {
@@ -38,18 +38,18 @@ function checkGuess(letter) {
             console.log("yeah thats right")
         }
     }
-}
+};
 
 // should show all guessed letters ... once
 function updateChoices() {
-    letterDisplay.innerHTML = "";
+    letterDisplay.textContent = "";
     for(var i = 0; i <guessedLetters.length; i++) {
         var newLetter = document.createElement('div');
         newLetter.setAttribute("class", "letter");
-        newLetter.textContent = guessedLetters[i];
         letterDisplay.appendChild(newLetter);
+        newLetter.innerHTML = guessedLetters[i];
     }
-}
+};
 
 // will set blank for game display
 function setWordDisplay() {
