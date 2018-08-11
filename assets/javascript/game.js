@@ -57,8 +57,8 @@ function startGame() {
 }
 
 function checkGuess(letter) {
-    for (var i = 0; i < currentWord.lenght; i++) {
+    for (var i = 0; i < currentWord.length; i++) {
         if (letter === currentWord[i])
-            ;
+            document.getElementById("blank" + i).textContent = currentWord[i];
     }
 }
