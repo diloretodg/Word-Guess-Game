@@ -1,61 +1,64 @@
-var letterDisplay = document.getElementById("letter-display");
 var wordDisplay = document.getElementById("word-display");
+var guessDisplay = document.getElementById("guess-display");
+var letterDisplay = document.getElementById("letter-display");
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h','i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's','t', 'u', 'v', 'w', 'x', 'y', 'z'];
-var wordSelection = ["Panda","Red Panda","Owl"];
+var wordSelection = ["panda","red panda","owl"];
 var currentChoiceIndex = Math.floor(Math.random()*wordSelection.length);
 var wordChoice = wordSelection[currentChoiceIndex];
 var currentWord = Array.from(wordChoice);
 var guessedLetters = [];
-var correctLetter = [];
-var gameStarted = true;
+var guessWord = [];
 
-// event listener for letters pressed
+startGame();
+
 document.onkeydown = function(event) {
-    if (gameStarted === true) {
-        makeGuess(event.key);
-    } else {
-        startGame();
-    }
+    makeGuess(event.key);
 }
 
-// if geuss is valid option. checkGuess() is called
 function makeGuess(key) {
     for(var i = 0; i < alphabet.length; i++) {
         if (key === alphabet[i]) {
             if (guessedLetters.indexOf(key) === -1) {
                 guessedLetters.push(key);
-                // checkGuess(alphabet[i]);
-                updateChoices();
+                updateGuess(key);
+                checkGuess(key);
             }   
         }
     }
 };
 
-// will check if letter was correct
-function checkGuess(letter) {
-    for (var i = 0; i <currentWord.lenght; i++) {
-        if (letter === currentWord[i]) {
-            console.log("yeah thats right")
-        }
-    }
-};
+function updateGuess() {
+    guessDisplay.textContent = guessedLetters;
+}
 
-// should show all guessed letters ... once
-function updateChoices() {
-    letterDisplay.textContent = "";
-    for(var i = 0; i <guessedLetters.length; i++) {
-        var newLetter = document.createElement('div');
-        newLetter.setAttribute("class", "letter");
-        letterDisplay.appendChild(newLetter);
-        newLetter.innerHTML = guessedLetters[i];
-    }
-};
-
-// will set blank for game display
-function setWordDisplay() {
+function pickWord() {
+    currentChoiceIndex;
+    guessWordLength();
+    setWordDisplay();
+}
+function guessWordLength() {
     for (i = 0; i < currentWord.length; i++) {
-        var newSpace = document.createElement("div");
-        newSpace.textContent = "-";
-        wordDisplay.appendChild(newSpace);
+        guessWord.push("_ ,");
+     };
+}
+
+function setWordDisplay() {
+    for (var i = 0; i < guessWord.length; i++) {
+        var newBlank = document.createElement("a");wordDisplay.appendChild(newBlank);
+        newBlank.setAttribute("id", "blank" + i);
+        newBlank.innerHTML = guessWord[i];
+    };
+}
+
+function startGame() {
+    guessedLetters = [];
+    updateGuess();
+    pickWord();
+}
+
+function checkGuess(letter) {
+    for (var i = 0; i < currentWord.lenght; i++) {
+        if (letter === currentWord[i])
+            ;
     }
 }

@@ -77,5 +77,11 @@ document.onkeydown = function(event) {
 
 
 
-// start game function
-// 
+// path of good letter 
+// press key -- doc.onkeydown
+// check key -- makeGuess(key)
+// check if key already guessed --
+// add key to guessed guessedletter.push
+// add key to correct guessed correctletter.push
+// update displays/ replace blanks
+// check for wins 
