@@ -2,13 +2,11 @@ body {
     background-color: azure;
 }
 
-#header {
-    font-size: 60px;
-    text-align: center;
-    font-weight: bold;
-
+.game-display {
+    height: 700px;
 }
 
-#word-display {
-    
+#game-img {
+    height: 200px;
+    width: 200px;
 }
