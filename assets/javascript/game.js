@@ -17,7 +17,7 @@ var wordSelection = [
     {word: "Beaver", src:"assets/images/beaver.jpg"},
     {word: "Barn Owl", src:"assets/images/barn_owl.jpg"},
     {word: "Blue Whale", src:"assets/images/blue_whale.jpg"},
-    {word: "Elephant", src:"assets/images/elefant.jpg"},
+    {word: "Elephant", src:"assets/images/elephant.jpg"},
     {word: "Grizzly Bear", src:"assets/images/grizzly_bear.jpg"},
     {word: "Hummingbird", src:"assets/images/hummingbird.jpg"},
     {word: "Fox", src:"assets/images/fox.jpg"},
