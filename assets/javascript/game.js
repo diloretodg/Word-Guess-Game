@@ -113,18 +113,22 @@ document.onkeydown = function(event) {
     if (gameStart != true) {
         startGame();
     } else {
-        makeGuess(event);
+        makeGuess(event.key);
+        // console.log("made guess" + event.key)
     }
 }
 
 function makeGuess(key) {
-    for(var i = 0; i < alphabet.length; i++) {
-        if (key === alphabet[i]) {
-            if (guessedLetters.indexOf(key) === -1) {
-                guessedLetters.push(key);
-                checkGuess(key);
-                winMessage.textContent = "";
-            }   
+    if (gameStart != false) {
+        for(var i = 0; i < alphabet.length; i++) {
+            if (key === alphabet[i]) {
+                if (guessedLetters.indexOf(key) === -1) {
+                    winMessage.textContent = "";
+                    guessedLetters.push(key);
+                    checkGuess(key);
+                    // console.log("pushed guess");
+                }   
+            }
         }
     }
 }
@@ -142,9 +146,11 @@ function checkGuess(letter) {
         livesLeft --;
         updateDisplay();
         checkLose();
+        // console.log("checked false")
     } else {
         updateDisplay();
         checkWin();
+        // console.log("checked true")
     }
 }
 
@@ -156,7 +162,7 @@ function checkWin() {
         }
     }
     if (winner === true) {
-        gameWin(wordChoice)
+        gameWin(wordChoice);
     }
 }
 
