@@ -3,9 +3,16 @@ var guessDisplay = document.getElementById("guess-display");
 var letterDisplay = document.getElementById("letter-display");
 var livesDisplay = document.getElementById("lives-display");
 var winDisplay = document.getElementById("win-display");
-var newGameBtn = document.getElementById("new-game-btn")
+var newGameBtn = document.getElementById("new-game-btn");
+var gameImg = document.getElementById("game-img")
+                  
+
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h','i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's','t', 'u', 'v', 'w', 'x', 'y', 'z'];
-var wordSelection = ["panda","red panda","owl"];
+var wordSelection = [
+    {word: "panda", src:"assets/images/panda.jpg"},
+    {word: "owl", src:"assets/images/owl.jpg"},
+    {word: "red panda", src:"assets/images/red_panda.jpg"},
+];
 var currentChoiceIndex;
 var wordChoice;
 var currentWord;
@@ -47,7 +54,7 @@ function updateGuessDisplay () {
 
 function pickWord() {
     currentChoiceIndex = Math.floor(Math.random()*wordSelection.length);
-    wordChoice = wordSelection[currentChoiceIndex];
+    wordChoice = wordSelection[currentChoiceIndex].word;
     currentWord = Array.from(wordChoice);;
     guessWordLength();
     setWordDisplay();
@@ -84,6 +91,7 @@ function startGame() {
     livesLeft = 7;
     guessedLetters = [];
     pickWord();
+    gameImg.src = "assets/images/question-mark.jpg"
     updateDisplay();
 }
 
@@ -114,7 +122,7 @@ function checkWin() {
         }
     }
     if (winner === true) {
-        alert(" you win!")
+        gameWin(currentWord)
     }
 }
 
@@ -129,4 +137,8 @@ function updateDisplay() {
     updateGuessDisplay();
     updateLivesDisplay();
     updateWinDisplay();
+}
+
+function gameWin() {
+    gameImg.src = wordSelection[currentChoiceIndex].src;
 }
