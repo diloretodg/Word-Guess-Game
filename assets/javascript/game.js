@@ -124,7 +124,7 @@ function makeGuess(key) {
             if (key === alphabet[i]) {
                 if (guessedLetters.indexOf(key) === -1) {
                     winMessage.textContent = "";
-                    guessedLetters.push(key.toUpperCase());
+                    guessedLetters.push(key);
                     checkGuess(key);
                     // console.log("pushed guess");
                 }   
