@@ -4,14 +4,40 @@ var letterDisplay = document.getElementById("letter-display");
 var livesDisplay = document.getElementById("lives-display");
 var winDisplay = document.getElementById("win-display");
 var newGameBtn = document.getElementById("new-game-btn");
-var gameImg = document.getElementById("game-img")
+var gameImg = document.getElementById("game-img");
+var winMessage = document.getElementById("win-message");
                   
 
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h','i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's','t', 'u', 'v', 'w', 'x', 'y', 'z'];
 var wordSelection = [
-    {word: "panda", src:"assets/images/panda.jpg"},
-    {word: "owl", src:"assets/images/owl.jpg"},
-    {word: "red panda", src:"assets/images/red_panda.jpg"},
+    {word: "Panda", src:"assets/images/panda.jpg"},
+    {word: "Snow Owl", src:"assets/images/snow_owl.jpg"},
+    {word: "Red Panda", src:"assets/images/red_panda.jpg"},
+    {word: "Owl", src:"assets/images/owl.jpg"},
+    {word: "Beaver", src:"assets/images/beaver.jpg"},
+    {word: "Barn Owl", src:"assets/images/barn_owl.jpg"},
+    {word: "Blue Whale", src:"assets/images/blue_whale.jpg"},
+    {word: "Elephant", src:"assets/images/elefant.jpg"},
+    {word: "Grizzly Bear", src:"assets/images/grizzly_bear.jpg"},
+    {word: "Hummingbird", src:"assets/images/hummingbird.jpg"},
+    {word: "Fox", src:"assets/images/fox.jpg"},
+    {word: "Jaguar", src:"assets/images/jaguar.jpg"},
+    {word: "Komodo Dragon", src:"assets/images/komodo_dragon.jpg"},
+    {word: "Macaw", src:"assets/images/macaw.jpg"},
+    {word: "Salamander", src:"assets/images/salamander.jpg"},
+    {word: "Squirrel", src:"assets/images/squirrel.jpg"},
+    {word: "Swan", src:"assets/images/swan.jpg"},
+    {word: "Grey Wolf", src:"assets/images/grey_wolf.jpg"},
+    {word: "Wolverine", src:"assets/images/wolverine.jpeg"},
+    {word: "Zebra", src:"assets/images/zebra.jpg"},
+    {word: "Yak", src:"assets/images/yak.jpeg"},
+    {word: "Buffalo", src:"assets/images/buffalo.jpg"},
+    {word: "Orca", src:"assets/images/orca.jpg"},
+    {word: "Python", src:"assets/images/python.jpeg"},
+    {word: "Ocelot", src:"assets/images/ocelot.jpg"},
+    {word: "Sea Otter", src:"assets/images/sea_otter.jpg"}
+
+
 ];
 var currentChoiceIndex;
 var wordChoice;
@@ -55,14 +81,14 @@ function updateGuessDisplay () {
 function pickWord() {
     currentChoiceIndex = Math.floor(Math.random()*wordSelection.length);
     wordChoice = wordSelection[currentChoiceIndex].word;
-    currentWord = Array.from(wordChoice);;
+    currentWord = Array.from(wordChoice.toLowerCase());
     guessWordLength();
     setWordDisplay();
 }
 function guessWordLength() {
     for (i = 0; i < currentWord.length; i++) {
         if (currentWord[i] != " "){
-            guessWord.push("_ ,");
+            guessWord.push("_,");
         } else {
             guessWord.push(" ")
         }
@@ -86,6 +112,7 @@ function setWordDisplay() {
 }
 
 function startGame() {
+    winMessage.textContent = "";
     wordDisplay.innerHTML = "";
     guessWord = [];
     livesLeft = 7;
@@ -122,13 +149,13 @@ function checkWin() {
         }
     }
     if (winner === true) {
-        gameWin(currentWord)
+        gameWin(wordChoice)
     }
 }
 
 function checkLose() {
     if (livesLeft <= 0) {
-        alert("You lose. The right word was " + wordChoice)
+        winMessage.textContent = "You lose. The right word was " + wordChoice;
     }
 
 }
@@ -139,6 +166,9 @@ function updateDisplay() {
     updateWinDisplay();
 }
 
-function gameWin() {
+function gameWin(x) {
     gameImg.src = wordSelection[currentChoiceIndex].src;
+    win ++;
+    winMessage.textContent = "You Win!!! The word was " + x;
+    updateDisplay();
 }

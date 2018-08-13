@@ -1,13 +1,18 @@
 body {
     background-color: azure;
-    font-size: 32px;
+    font-size: 30px;
 }
 
 .game-display {
     height: 700px;
+    margin-top: 20px;
 }
 
 #game-img {
     height: 200px;
-    width: 200px;
+    width: auto;
+} 
+
+.question {
+    
 }
