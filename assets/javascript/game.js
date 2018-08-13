@@ -86,7 +86,7 @@ function pickWord() {
 function guessWordLength() {
     for (i = 0; i < currentWord.length; i++) {
         if (currentWord[i] != " "){
-            guessWord.push("_,");
+            guessWord.push("_ ");
         } else {
             guessWord.push(" ")
         }
