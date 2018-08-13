@@ -1,5 +1,5 @@
 body {
-    background-color: azure;
+    background-image: url(../images/skulls.png);
     font-size: 30px;
 }
 
@@ -12,7 +12,3 @@ body {
     height: 200px;
     width: auto;
 } 
-
-.question {
-    
-}

@@ -9,6 +9,7 @@ var winMessage = document.getElementById("win-message");
                   
 
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h','i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's','t', 'u', 'v', 'w', 'x', 'y', 'z'];
+
 var wordSelection = [
     {word: "Panda", src:"assets/images/panda.jpg"},
     {word: "Snow Owl", src:"assets/images/snow_owl.jpg"},
@@ -35,9 +36,13 @@ var wordSelection = [
     {word: "Orca", src:"assets/images/orca.jpg"},
     {word: "Python", src:"assets/images/python.jpeg"},
     {word: "Ocelot", src:"assets/images/ocelot.jpg"},
-    {word: "Sea Otter", src:"assets/images/sea_otter.jpg"}
-
-
+    {word: "Sea Otter", src:"assets/images/sea_otter.jpg"},
+    {word: "Octopus", src:"assets/images/octopus.jpg"},
+    {word: "Armadillo", src:"assets/images/armadillo.jpg"},
+    {word: "Aye Aye", src:"assets/images/aye_aye.jpg"},
+    {word: "Capybara", src:"assets/images/capybara.JPG"},
+    {word: "Chinchilla", src:"assets/images/chinchilla.jpg"},
+    {word: "Impala", src:"assets/images/impala.jpg"}
 ];
 var currentChoiceIndex;
 var wordChoice;
