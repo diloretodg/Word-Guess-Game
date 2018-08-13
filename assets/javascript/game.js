@@ -53,37 +53,27 @@ var guessWord = [];
 var guessedLetters = [];
 var livesLeft = 7;
 var win = 0;
+var gameStart = false;
+
+startGame();
+
+function startGame() {
+    gameStart = true;
+    winMessage.textContent = "";
+    wordDisplay.innerHTML = "";
+    guessWord = [];
+    livesLeft = 7;
+    guessedLetters = [];
+    pickWord();
+    gameImg.src = "assets/images/question-mark.jpg"
+    updateDisplay();
+    winMessage.textContent = "Press any Key to Start";
+
+}
 
 newGameBtn.onclick = function() {
     startGame();
 } 
-
-document.onkeydown = function(event) {
-    makeGuess(event.key);
-}
-
-function makeGuess(key) {
-    for(var i = 0; i < alphabet.length; i++) {
-        if (key === alphabet[i]) {
-            if (guessedLetters.indexOf(key) === -1) {
-                guessedLetters.push(key);
-                checkGuess(key);
-            }   
-        }
-    }
-};
-
-function updateWinDisplay() {
-    winDisplay.textContent = ("Wins: " + win);
-}
-
-function updateLivesDisplay() {
-    livesDisplay.textContent = ("Lives Remaining: " + livesLeft);
-}
-
-function updateGuessDisplay () {
-    guessDisplay.textContent = guessedLetters;
-}
 
 function pickWord() {
     currentChoiceIndex = Math.floor(Math.random()*wordSelection.length);
@@ -92,6 +82,7 @@ function pickWord() {
     guessWordLength();
     setWordDisplay();
 }
+
 function guessWordLength() {
     for (i = 0; i < currentWord.length; i++) {
         if (currentWord[i] != " "){
@@ -115,18 +106,27 @@ function setWordDisplay() {
             newBlank.textContent = guessWord[i];
             wordDisplay.appendChild(newBlank);
         }
-    };
+    }
 }
 
-function startGame() {
-    winMessage.textContent = "";
-    wordDisplay.innerHTML = "";
-    guessWord = [];
-    livesLeft = 7;
-    guessedLetters = [];
-    pickWord();
-    gameImg.src = "assets/images/question-mark.jpg"
-    updateDisplay();
+document.onkeydown = function(event) {
+    if (gameStart != true) {
+        startGame();
+    } else {
+        makeGuess(event);
+    }
+}
+
+function makeGuess(key) {
+    for(var i = 0; i < alphabet.length; i++) {
+        if (key === alphabet[i]) {
+            if (guessedLetters.indexOf(key) === -1) {
+                guessedLetters.push(key);
+                checkGuess(key);
+                winMessage.textContent = "";
+            }   
+        }
+    }
 }
 
 function checkGuess(letter) {
@@ -160,22 +160,35 @@ function checkWin() {
     }
 }
 
+function gameWin(x) {
+    gameImg.src = wordSelection[currentChoiceIndex].src;
+    win ++;
+    winMessage.textContent = "You Win!!! The word was " + x;
+    gameStart = false;
+    updateDisplay();
+}
+
 function checkLose() {
     if (livesLeft <= 0) {
         winMessage.textContent = "You lose. The right word was " + wordChoice;
+        gameStart = false;
     }
+}
 
+function updateWinDisplay() {
+    winDisplay.textContent = ("Wins: " + win);
+}
+
+function updateLivesDisplay() {
+    livesDisplay.textContent = ("Lives Remaining: " + livesLeft);
+}
+
+function updateGuessDisplay () {
+    guessDisplay.textContent = guessedLetters;
 }
 
 function updateDisplay() {
     updateGuessDisplay();
     updateLivesDisplay();
     updateWinDisplay();
-}
-
-function gameWin(x) {
-    gameImg.src = wordSelection[currentChoiceIndex].src;
-    win ++;
-    winMessage.textContent = "You Win!!! The word was " + x;
-    updateDisplay();
 }
