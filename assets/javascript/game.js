@@ -42,8 +42,10 @@ var wordSelection = [
     {word: "Aye Aye", src:"assets/images/aye_aye.jpg"},
     {word: "Capybara", src:"assets/images/capybara.JPG"},
     {word: "Chinchilla", src:"assets/images/chinchilla.jpg"},
-    {word: "Impala", src:"assets/images/impala.jpg"}
+    {word: "Impala", src:"assets/images/impala.jpg"},
+    {word: "Gorilla", src:"assets/images/gorilla.jpg"}
 ];
+
 var currentChoiceIndex;
 var wordChoice;
 var currentWord;
